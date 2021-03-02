@@ -1,0 +1,115 @@
+﻿@model RegistroViajes.Models.RegistroViaje
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>RegistroViaje</h4>
+    <h5>Solo Se Permite un Maximo de 5 pasajeros</h5>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaisOrigen, "PaisOrigen", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PaisOrigen", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PaisOrigen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaisDestino, "PaisDestino", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PaisDestino", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PaisDestino, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Pasajeros de 0 - 5 ")
+        @Html.DropDownList("Cantidad_OP1", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Cantidad_OP1, "", new { @class = "text-danger" })
+        @Html.Label(" USD 250 Asistencia médica por enfermedad o accidente USD 80")<br />
+        @Html.Label("Asistencia médica por pre-existencia* USD 800")<br />
+        @Html.Label("Compensación por pérdida de equipaje USD 2")<br />
+        @Html.Label("Teleasistencia Incluido")<br />
+        @Html.Label("Asistencia médica por COVID19 USD 80 ")<br />
+        @Html.Label("Gastos de hotel por convalecencia por Covid19 USD 800")<br />
+        @Html.Label("Medicamentos ambulatorio* USD 2")<br />
+        @Html.Label("Rotura de equipaje marítimo USD 200")<br />
+        @Html.Label("Odontología* USD 500")<br />
+        @Html.Label("Días complementarios por internación* 5 Días")<br />
+        @Html.Label("Gastos por imposibilidad de embarque* USD 150")<br />
+
+
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Pasajeros de 6 - 18 ")
+        @Html.DropDownList("Cantidad_OP2", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Cantidad_OP2, "", new { @class = "text-danger" })
+        @Html.Label("Precio estandar : USD 900 Asistencia médica por enfermedad o accidente USD 800")<br />
+        @Html.Label("Asistencia médica por pre-existencia* USD 500")<br />
+        @Html.Label("Compensación por pérdida de equipaje USD 20")<br />
+        @Html.Label("Teleasistencia Incluido")<br />
+        @Html.Label("Asistencia médica por COVID19 USD 800")<br />
+        @Html.Label("Gastos de hotel por convalecencia por Covid19 USD 800")<br />
+        @Html.Label("Medicamentos ambulatorio* USD 20")<br />
+        @Html.Label("Rotura de equipaje marítimo USD 200")<br />
+        @Html.Label("Odontología* USD 500")<br />
+        @Html.Label("Días complementarios por internación* 10 Días")<br />
+        @Html.Label("Gastos por imposibilidad de embarque* USD 150")<br />
+
+
+
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Pasajeros de 19 - 65 ")
+        @Html.DropDownList("Cantidad_OP3", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Cantidad_OP3, "", new { @class = "text-danger" })
+        @Html.Label("Precio estandar : USD 1000")<br />
+        @Html.Label("Asistencia médica por enfermedad / accidente USD 500")<br />
+        @Html.Label("Asistencia médica por pre-existencia* USD 200")<br />
+        @Html.Label("Compensación por pérdida de equipaje USD 200")<br />
+        @Html.Label("65 años o mas: Precio estandar : USD 2000")<br />
+        @Html.Label("Asistencia médica por enfermedad / accidente USD 500")<br />
+        @Html.Label("Acompañamiento de menores* Incluido")<br />
+        @Html.Label("Regreso anticipado por siniestro en domicilio* Incluido")<br />
+        @Html.Label("Transmisión de mensajes urgentes Incluido")<br />
+        @Html.Label("Cúmulo por evento, accidente con múltiples Titulares, a prorrata USD 400")<br />
+
+    </div>
+    <div class="form-group">
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            
+            <input type="submit" value="Create" class="btn btn-default" onclick="myfunction()"/>
+        </div>
+    </div>
+</div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function myfunction() {
+        alert("holas");
+    }
+</script>

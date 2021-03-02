@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatosviajeModelStoreContainer" CdmEntityContainer="DatosviajeEntities">
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="DatosviajeModel.pai">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasajeros">
+      <EntityTypeMapping TypeName="DatosviajeModel.Pasajero">
+        <MappingFragment StoreEntitySet="Pasajeros">
+          <ScalarProperty Name="Edad_19_65" ColumnName="Edad_19_65" />
+          <ScalarProperty Name="Edad_6_18" ColumnName="Edad_6_18" />
+          <ScalarProperty Name="IdRegistroViaje" ColumnName="IdRegistroViaje" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Edad_0_5" ColumnName="Edad_0_5" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroViajes">
+      <EntityTypeMapping TypeName="DatosviajeModel.RegistroViaje">
+        <MappingFragment StoreEntitySet="RegistroViajes">
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="PaisDestino" ColumnName="PaisDestino" />
+          <ScalarProperty Name="PaisOrigen" ColumnName="PaisOrigen" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

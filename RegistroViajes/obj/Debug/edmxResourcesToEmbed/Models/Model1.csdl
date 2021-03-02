@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatosviajeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DatosviajeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="pais" EntityType="DatosviajeModel.pai" />
+    <EntitySet Name="Pasajeros" EntityType="DatosviajeModel.Pasajero" />
+    <EntitySet Name="RegistroViajes" EntityType="DatosviajeModel.RegistroViaje" />
+    <AssociationSet Name="FK__RegistroV__PaisD__267ABA7A" Association="DatosviajeModel.FK__RegistroV__PaisD__267ABA7A">
+      <End Role="pai" EntitySet="pais" />
+      <End Role="RegistroViaje" EntitySet="RegistroViajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RegistroV__PaisD__276EDEB3" Association="DatosviajeModel.FK__RegistroV__PaisD__276EDEB3">
+      <End Role="pai" EntitySet="pais" />
+      <End Role="RegistroViaje" EntitySet="RegistroViajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pasajeros__IdReg__2A4B4B5E" Association="DatosviajeModel.FK__Pasajeros__IdReg__2A4B4B5E">
+      <End Role="RegistroViaje" EntitySet="RegistroViajes" />
+      <End Role="Pasajero" EntitySet="Pasajeros" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="pai">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RegistroViajes" Relationship="DatosviajeModel.FK__RegistroV__PaisD__267ABA7A" FromRole="pai" ToRole="RegistroViaje" />
+    <NavigationProperty Name="RegistroViajes1" Relationship="DatosviajeModel.FK__RegistroV__PaisD__276EDEB3" FromRole="pai" ToRole="RegistroViaje" />
+  </EntityType>
+  <EntityType Name="Pasajero">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Edad_0_5" Type="Int32" />
+    <Property Name="Costo" Type="Double" />
+    <Property Name="IdRegistroViaje" Type="Int32" />
+    <Property Name="Edad_6_18" Type="Int32" />
+    <Property Name="Edad_19_65" Type="Int32" />
+    <NavigationProperty Name="RegistroViaje" Relationship="DatosviajeModel.FK__Pasajeros__IdReg__2A4B4B5E" FromRole="Pasajero" ToRole="RegistroViaje" />
+  </EntityType>
+  <EntityType Name="RegistroViaje">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaisOrigen" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PaisDestino" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="pai" Relationship="DatosviajeModel.FK__RegistroV__PaisD__267ABA7A" FromRole="RegistroViaje" ToRole="pai" />
+    <NavigationProperty Name="pai1" Relationship="DatosviajeModel.FK__RegistroV__PaisD__276EDEB3" FromRole="RegistroViaje" ToRole="pai" />
+    <NavigationProperty Name="Pasajeros" Relationship="DatosviajeModel.FK__Pasajeros__IdReg__2A4B4B5E" FromRole="RegistroViaje" ToRole="Pasajero" />
+  </EntityType>
+  <Association Name="FK__RegistroV__PaisD__267ABA7A">
+    <End Type="DatosviajeModel.pai" Role="pai" Multiplicity="0..1" />
+    <End Type="DatosviajeModel.RegistroViaje" Role="RegistroViaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pai">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="RegistroViaje">
+        <PropertyRef Name="PaisOrigen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RegistroV__PaisD__276EDEB3">
+    <End Type="DatosviajeModel.pai" Role="pai" Multiplicity="0..1" />
+    <End Type="DatosviajeModel.RegistroViaje" Role="RegistroViaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pai">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="RegistroViaje">
+        <PropertyRef Name="PaisDestino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pasajeros__IdReg__2A4B4B5E">
+    <End Type="DatosviajeModel.RegistroViaje" Role="RegistroViaje" Multiplicity="0..1" />
+    <End Type="DatosviajeModel.Pasajero" Role="Pasajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegistroViaje">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Pasajero">
+        <PropertyRef Name="IdRegistroViaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
